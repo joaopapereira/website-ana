@@ -1,10 +1,11 @@
-import { PayloadAction, createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { sendContact } from './contactAPI';
 import { RootState } from '../../app/store';
-import axios from 'axios';
 
 export type ContactData = {
     name: string,
     email: string,
+    topic: string,
     message: string
 }
 
@@ -17,15 +18,15 @@ const initialState: ContactState = {
 };
 
 export const contactPost = createAsyncThunk(
-    'contact/save',
+    'contact/contactSave',
     async (contactData: ContactData) => {
         // The value we return becomes the `fulfilled` action payload
-        const result = await axios.post('/.netlify/functions/contact-us-form', JSON.stringify(contactData))
-        return result.data;
+        const result = await sendContact(contactData.name, contactData.email, contactData.topic, contactData.message)
+        return result.body;
     }
 );
 
-export const menuSlice = createSlice({
+export const contactSlice = createSlice({
     name: 'contact',
     initialState,
     // The `reducers` field lets us define reducers and generate associated actions
@@ -45,7 +46,8 @@ export const menuSlice = createSlice({
             });
     },
 });
-export const contactState = (state: ContactState) => state.status;
+
+export const contactState = (state: RootState) => state.contact.status;
 
 
-export default menuSlice.reducer;
+export default contactSlice.reducer;

@@ -8,6 +8,7 @@ import { Hero } from './features/hero/Hero';
 import { Publications } from './features/publications/Publications';
 import './App.css';
 import { Navigation } from './features/navigation/Navigation';
+import { Contact } from './features/contact/Contact';
 
 function App() {
   return (<section>
@@ -18,8 +19,9 @@ function App() {
       <Skills></Skills>
       <Resume></Resume>
       <Publications></Publications>
+      <Contact></Contact>
     </div>
-    </section>);
+  </section>);
 }
 
 export default App;
