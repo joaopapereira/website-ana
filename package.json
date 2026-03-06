@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@netlify/functions": "^5.1.2",
     "@popperjs/core": "^2.11.8",
     "@reduxjs/toolkit": "^2.11.2",
