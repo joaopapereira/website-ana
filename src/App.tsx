@@ -2,7 +2,6 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { About } from './features/about/About';
-import { Skills } from './features/skills/Skills';
 import { Resume } from './features/resume/Resume';
 import { Hero } from './features/hero/Hero';
 import { Publications } from './features/publications/Publications';
@@ -16,7 +15,6 @@ function App() {
     <div id="main">
       <Hero></Hero>
       <About></About>
-      <Skills></Skills>
       <Resume></Resume>
       <Publications></Publications>
       <Contact></Contact>

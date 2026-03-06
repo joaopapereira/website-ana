@@ -20,7 +20,7 @@ export function Navigation() {
                 <i onClick={() => dispatch(toggle())} className={`${styles['header-toggle']} d-xl-none bi ${buttonClass}`}></i>
 
                 <div className={`${styles['profile-img']}`}>
-                <img src="assets/img/my-profile-img.jpg" alt="" className="img-fluid rounded-circle"/>
+                <img src="img/profile-photo.jpg" alt="" className="img-fluid rounded-circle"/>
                 </div>
 
                 <a href="index.html" className={`${styles['logo']} d-flex align-items-center justify-content-center`}>

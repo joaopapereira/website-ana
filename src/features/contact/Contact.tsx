@@ -11,7 +11,6 @@ export function Contact() {
 
     type Touched = Partial<Record<keyof ContactData, boolean>>
     const [touched, setTouched] = useState<Touched>({})
-    var isFormValid = true
 
     const validate = (contactInfo: ContactData): Errors => {
         const newErrors: Errors = {}
@@ -19,22 +18,17 @@ export function Contact() {
 
         if (contactInfo.name === undefined || contactInfo.name === "") {
             newErrors.name = "Name field is required"
-            isFormValid = false
         }
         if (contactInfo.email === undefined || contactInfo.email === "") {
             newErrors.email = "Email field is required"
-            isFormValid = false
         } else if (!emailRegex.test(contactInfo.email)) {
             newErrors.email = "Please enter a valid email (ex: yournam@domain.com)."
-            isFormValid = false
         }
         if (contactInfo.topic === undefined || contactInfo.topic === "") {
             newErrors.topic = "Topic field is required"
-            isFormValid = false
         }
         if (contactInfo.message === undefined || contactInfo.message === "") {
             newErrors.message = "Message field is required"
-            isFormValid = false
         }
         return newErrors
     }
@@ -44,6 +38,12 @@ export function Contact() {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
+        const validationErrors = validate(contact);
+        setErrors(validationErrors);
+        if (Object.keys(validationErrors).length > 0) {
+            setTouched({ name: true, email: true, topic: true, message: true });
+            return;
+        }
         dispatch(contactPost(contact))
     }
 
@@ -51,8 +51,7 @@ export function Contact() {
         if (currentState !== 'not') {
             return null
         }
-        if (errors)
-        var submitPossible = false
+        const isFormValid = Object.keys(errors).length === 0;
         return (<form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="name">Name</label>
@@ -141,4 +140,3 @@ export function Contact() {
         </div>
     </section>)
 }
-

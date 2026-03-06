@@ -20,7 +20,7 @@ export function Hero() {
     return (
         <section id="hero" className="d-flex flex-column justify-content-center align-items-center">
             <div className="hero-container" data-aos="fade-in">
-                <h1>Ana Mesquita</h1>
+                <h1 className='pop-text'>Ana Mesquita</h1>
                 <p>I'm <span ref={el}></span></p>
             </div>
         </section>
